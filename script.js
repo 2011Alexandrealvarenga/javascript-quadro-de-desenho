@@ -20,8 +20,9 @@ screen.addEventListener('mouseup', mouseUpEvent);
 
 // functions
 function colorClickEvent(e){
-  let color =e.target.getAttribute('data-color');
+  let color = e.target.getAttribute('data-color');
   console.log('cor selecionada', color);
+  currentColor = color;
 
   // remove a classe ativa
   document.querySelector('.color.active').classList.remove('active');
@@ -31,7 +32,7 @@ function colorClickEvent(e){
 
 }
 
-function mouseDownEvent(){
+function mouseDownEvent(e){
   canDraw = true;
   mouseX = e.pageX - screen.offsetLeft;
   mouseY = e.pageY - screen.offsetTop;
@@ -39,7 +40,7 @@ function mouseDownEvent(){
 }
 function mouseMoveEvent(e){
   if(canDraw){
-    canDraw(e.pageX, e.pageY);
+    draw(e.pageX, e.pageY);
 
   }
   // pagex e pagey identificam onde esta o mouse
@@ -49,6 +50,7 @@ function mouseUpEvent(){
   
 }
 
+// funcao para tracar a linha
 function draw(x, y){
   let pointX = x - screen.offsetLeft;
   let pointY = y - screen.offsetTop;
@@ -56,7 +58,12 @@ function draw(x, y){
   ctx.beginPath();
   // propriedade da largura da linha, propriedade de linha, da linha
   ctx.lineWidth = 5; 
-  ctx.lineJoin = 'round' ;
+  ctx.lineJoin = 'round';
+  ctx.moveTo(mouseX, mouseY);
+  ctx.lineTo(pointX, pointY);
+  ctx.closePath();
+  ctx.strokeStyle = currentColor;
+  ctx.stroke();
 
   mouseX = pointX;
   mouseY = pointY;
