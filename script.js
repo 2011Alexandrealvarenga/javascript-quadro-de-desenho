@@ -53,4 +53,12 @@ function draw(x, y){
   let pointX = x - screen.offsetLeft;
   let pointY = y - screen.offsetTop;
 
+  ctx.beginPath();
+  // propriedade da largura da linha, propriedade de linha, da linha
+  ctx.lineWidth = 5; 
+  ctx.lineJoin = 'round' ;
+
+  mouseX = pointX;
+  mouseY = pointY;
+
 }
