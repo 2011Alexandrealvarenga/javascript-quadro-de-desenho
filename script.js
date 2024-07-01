@@ -12,4 +12,7 @@ function colorClickEvent(e){
   // remove a classe ativa
   document.querySelector('.color.active').classList.remove('active');
 
+  // adiciona a classe ativa
+  e.target.classList.add('active');
+
 }
