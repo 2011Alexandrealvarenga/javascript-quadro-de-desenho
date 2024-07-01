@@ -8,4 +8,8 @@ document.querySelectorAll('.colorArea .color').forEach(item => {
 function colorClickEvent(e){
   let color =e.target.getAttribute('data-color');
   console.log('cor selecionada', color);
+
+  // remove a classe ativa
+  document.querySelector('.color.active').classList.remove('active');
+
 }
